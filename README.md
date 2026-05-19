@@ -20,7 +20,7 @@ pingpong1/
 ## 🎮 Sayfalar
 
 ### 1. **index.html** - Ana Oyun Sayfası
-- **URL:** `https://defter.42web.io/`
+- **URL:** `https://bravercoder.github.io/`
 - **Amaç:** Ping Pong oyununu oynamak
 - **İçerik:**
   - Etkileşimli oyun canvas'ı
@@ -34,7 +34,7 @@ pingpong1/
   - Schema.org VideoGame veri yapısı
 
 ### 2. **about.html** - Hakkında Sayfası
-- **URL:** `https://defter.42web.io/about.html`
+- **URL:** `https://bravercoder.github.io/about.html`
 - **Amaç:** Oyun hakkında bilgi sağlamak
 - **İçerik:**
   - Oyunun tarihi
@@ -47,7 +47,7 @@ pingpong1/
   - Breadcrumb navigation
 
 ### 3. **faq.html** - Sıkça Sorulan Sorular
-- **URL:** `https://defter.42web.io/faq.html`
+- **URL:** `https://bravercoder.github.io/faq.html`
 - **Amaç:** Kullanıcı sorularını cevaplamak
 - **İçerik:**
   - Oyun kontrolleri
@@ -73,7 +73,7 @@ pingpong1/
 - **Nasıl Kullanılır:**
   1. Google Search Console'a git
   2. Sitemap > Yeni Sitemap Ekle
-  3. `https://defter.42web.io/sitemap.xml` yapıştır
+  3. `https://bravercoder.github.io/sitemap.xml` yapıştır
 
 ### **robots.txt**
 - **Amaç:** Arama motorlarına talimat ver
@@ -85,7 +85,7 @@ pingpong1/
   - Google: Crawl delay = 0 (hızlı taranması)
   - Diğerleri: Crawl delay = 1 saniye
 - **Nasıl Test Edilir:**
-  1. `https://defter.42web.io/robots.txt` ziyaret et
+  1. `https://bravercoder.github.io/robots.txt` ziyaret et
   2. Google Search Console > Robots.txt test aracı
 
 ### **.htaccess** (Apache Sunucusu İçin)

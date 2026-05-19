@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
     <url>
-        <loc>https://defter.42web.io/</loc>
+        <loc>https://bravercoder.github.io/</loc>
         <lastmod>2024-02-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <mobile:mobile/>
     </url>
     <url>
-        <loc>https://defter.42web.io/about.html</loc>
+        <loc>https://bravercoder.github.io/about.html</loc>
         <lastmod>2024-02-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
     </url>
     <url>
-        <loc>https://defter.42web.io/faq.html</loc>
+        <loc>https://bravercoder.github.io/faq.html</loc>
         <lastmod>2024-02-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

@@ -10,7 +10,7 @@ Disallow: /admin/
 Crawl-delay: 1
 
 # Sitemap konumu
-Sitemap: https://defter.42web.io/sitemap.xml
+Sitemap: https://bravercoder.github.io/sitemap.xml
 
 # Google'a özgü ayarlar
 User-agent: Googlebot
