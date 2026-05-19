@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ping Pong Oyunu SSS - Sıkça sorulan sorular ve cevapları. Oyun kontrolleri, kurallar ve teknik sorularınızın cevapları.">
+    <meta name="keywords" content="ping pong oyunu sss, ping pong faq, ping pong sorular, oyun kontrolleri nasıl">
+    <meta name="author" content="Ping Pong Game">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ping Pong Oyunu - Sıkça Sorulan Sorular">
+    <meta property="og:description" content="Ping Pong Oyunu hakkında sıkça sorulan sorular ve cevapları.">
+    <meta property="og:locale" content="tr_TR">
+
+    <title>Ping Pong Oyunu SSS - Sıkça Sorulan Sorular ve Cevapları</title>
+    <link rel="canonical" href="https://defter.42web.io/aq.html">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🎮</text></svg>">
+
+    <!-- Schema.org FAQPage Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Ping Pong Oyununu nasıl oynarım?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oyunu oynamak çok basit! 'Oyunu Başlat' butonuna tıkla, sonra raketini kontrol etmek için tuş takımını veya fare/dokunmatik ekranı kullan."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Mobil cihazlarda oyun kontrolleri nasıl çalışır?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mobil cihazlarda ekrana dokunarak veya sürükleyerek raketi kontrol edebilirsin. Oyun otomatik olarak cihazını tanır."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-left: 4px solid #764ba2;
+            padding-left: 20px;
+        }
+
+        .faq-item h3 {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-item h3:hover {
+            color: #667eea;
+        }
+
+        .faq-item h3::before {
+            content: "▶";
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active h3::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-answer {
+            color: #555;
+            line-height: 1.8;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-answer ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #f0f0f0;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+
+        .nav-links a {
+            color: white;
+            background: #667eea;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #764ba2;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .faq-section h2 {
+                font-size: 1.3em;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-links a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main role="main">
+        <div class="container">
+            <header>
+                <div class="breadcrumb">
+                    <a href="index.html">Anasayfa</a> > Sıkça Sorulan Sorular
+                </div>
+                <h1>❓ Sıkça Sorulan Sorular</h1>
+            </header>
+
+            <div class="faq-section">
+                <h2>Oyun Kontrolleri</h2>
+
+                <div class="faq-item">
+                    <h3>Oyun kontrolleri nasıl çalışır?</h3>
+                    <div class="faq-answer">
+                        <p>Oyunun kontrolleri cihazınıza göre değişir:</p>
+                        <ul>
+                            <li><strong>Bilgisayar:</strong> Tuş takımında Yukarı/Aşağı okları veya W/S tuşlarını kullan</li>
+                            <li><strong>Mobil/Tablet:</strong> Ekrana dokunarak veya sürükleyerek raketi kontrol et</li>
+                            <li><strong>Fare:</strong> Fare basılı tutarak oyuncuyu taşı</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Mobil cihazlarda oynamak zor mu?</h3>
+                    <div class="faq-answer">
+                        <p>Hayır! Mobil kontroller çok sezgisel tasarlanmıştır. Sadece raketini ekrana dokunarak kontrol etmen yeterli. Oyun otomatik olarak cihazının ekran boyutuna uyum sağlar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Farklı kontrol şekilleri deneyebilir miyim?</h3>
+                    <div class="faq-answer">
+                        <p>Evet! Tüm kontrol yöntemleri aynı anda aktiftir. Bilgisayarda oynarsan tuşlar, tablet/telefonda oynarsan dokunmatik ekran otomatik olarak çalışır.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Oyun Kuralları ve Oynanış</h2>
+
+                <div class="faq-item">
+                    <h3>Oyun nasıl başlar?</h3>
+                    <div class="faq-answer">
+                        <p>"Oyunu Başlat" butonuna tıkla. Oyun başlayınca top rastgele bir tarafa doğru hareket etmeye başlayacak. Hedefin topu raketinle vurarak karşı tarafa göndermek.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Puan sistemi nasıl çalışır?</h3>
+                    <div class="faq-answer">
+                        <p>Top ekranın dışına çıktığında bir puan kazanılır:</p>
+                        <ul>
+                            <li>Top sol taraftan çıkarsa <strong>bilgisayar</strong> bir puan alır</li>
+                            <li>Top sağ taraftan çıkarsa <strong>sen</strong> bir puan alırsın</li>
+                            <li>Puan göstergesi ekranın üst kısmında görüntülenir</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Bilgisayar açısı ne kadar zor?</h3>
+                    <div class="faq-answer">
+                        <p>Bilgisayar rakibi orta zorluk seviyesinde tasarlanmıştır. İyi değil ama şanslı vuruşları da var! Oyun çok kolay atau çok zor olması için bilgisayar hızını kod içinde ayarlayabilirsin.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Top neden sınırlardan sekiyor?</h3>
+                    <div class="faq-answer">
+                        <p>Top üst ve alt duvarlardan sekmesi gerçekçi bir oyun mekaniktir. Bu, oyunun daha dinamik ve eğlenceli hale gelmesini sağlar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Teknik Sorular</h2>
+
+                <div class="faq-item">
+                    <h3>Oyun tamamen ücretsiz mi?</h3>
+                    <div class="faq-answer">
+                        <p>Evet! Oyun tamamen ücretsiz ve reklamsız. İnternet bağlantısı olsa yeterli, başka hiçbir kurulum gerekmez.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Hangi tarayıcılarda çalışır?</h3>
+                    <div class="faq-answer">
+                        <p>Oyun HTML5 ve Canvas API kullanan modern tarayıcılarda çalışır:</p>
+                        <ul>
+                            <li>Chrome ve Chromium tabanlı tarayıcılar</li>
+                            <li>Firefox</li>
+                            <li>Safari</li>
+                            <li>Edge</li>
+                            <li>Opera</li>
+                        </ul>
+                        <p>Eski tarayıcılarda (Internet Explorer gibi) çalışmayabilir.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Oyun en eski telefonlarda çalışır mı?</h3>
+                    <div class="faq-answer">
+                        <p>Oyun HTML5 tabanlı olduğu için modern tarayıcıyı destekleyen tüm telefonlarda çalışır. Android 4.4+ ve iOS 9+ ile sorun yaşamazsın.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Oyun bilgilerimi kaydeder mi?</h3>
+                    <div class="faq-answer">
+                        <p>Hayır. Oyun tamamen lokal çalışır ve hiçbir kişisel bilgini kaydetmez. Her oyun sıfırdan başlar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Oyunu indirip çevrimdışı oynayabilir miyim?</h3>
+                    <div class="faq-answer">
+                        <p>Evet! HTML dosyasını indir ve doğrudan tarayıcıda aç. İnternet bağlantısı gerekmez.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Sorun Giderme</h2>
+
+                <div class="faq-item">
+                    <h3>Oyun yavaş çalışıyor, ne yapmalıyım?</h3>
+                    <div class="faq-answer">
+                        <p>Aşağıdaki adımları dene:</p>
+                        <ul>
+                            <li>Tarayıcıyı yenile (F5 veya Cmd+R)</li>
+                            <li>Diğer açık sekmeleri kapat</li>
+                            <li>Ram kullanımını azalt</li>
+                            <li>Modern tarayıcı kullan (Chrome/Firefox)</li>
+                            <li>İnternet hızını kontrol et</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Dokunmatik kontroller çalışmıyor</h3>
+                    <div class="faq-answer">
+                        <p>Aşağıdakileri kontrol et:</p>
+                        <ul>
+                            <li>Tarayıcı en son sürümde mi?</li>
+                            <li>JavaScript etkin mi?</li>
+                            <li>Sayfayı yenile</li>
+                            <li>Başka tarayıcı dene</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Sesin çıkmıyor</h3>
+                    <div class="faq-answer">
+                        <p>Bu versiyonun seslendirilmemiş versiyonudur. Görsel olarak oynanmaktadır. Gelecekteki sürümlerde ses efektleri eklenebilir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">← Oyuna Dön</a>
+                <a href="about.html">← Hakkında</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-item h3').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Varsayılan olarak ilk soruyu aç
+        if (document.querySelector('.faq-item')) {
+            document.querySelector('.faq-item').classList.add('active');
+        }
+    </script>
+</body>
+</html>

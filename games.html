@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ücretsiz online oyunlar. Ping Pong ve daha fazlası!">
+    <meta name="keywords" content="oyunlar, ping pong, online oyunlar, ücretsiz oyun">
+    <meta name="author" content="AI Entertainment Platform">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
+
+    <title>Oyunlar - AI Entertainment Platform</title>
+    <link rel="canonical" href="https://defter.42web.io/games.html">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🎮</text></svg>">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .container-main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            margin-bottom: 10px;
+            max-width: 600px;
+        }
+
+        .game-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #gameCanvas {
+            background: #000;
+            border: 3px solid #fff;
+            display: block;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .score {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 600px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .score-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .score-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .controls-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .controls {
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.9;
+            width: 100%;
+        }
+
+        .controls p {
+            margin: 8px 0;
+        }
+
+        .start-button {
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .start-button:hover {
+            background: #45a049;
+        }
+
+        .start-button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 600px) {
+            #gameCanvas {
+                width: 100%;
+                height: auto;
+                max-width: 100vw;
+            }
+
+            body {
+                padding: 10px;
+                min-height: auto;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+            }
+        }
+
+        .digit {
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+        }
+
+        /* Kırmızıdan beyaza geçiş yapan keyframe */
+        @keyframes redToWhite {
+            0%   { color: rgb(255, 0, 0); }
+            50%  { color: rgb(255, 255, 255); }
+            100% { color: rgb(255, 0, 0); }
+        }
+
+        /* Her rakam için farklı süre ve gecikme vererek bağımsız görünmesini sağlıyoruz */
+        .d1 { animation: redToWhite 3.0s ease-in-out infinite; }
+        .d2 { animation: redToWhite 2.6s ease-in-out infinite; animation-delay: 0.18s; }
+        .d3 { animation: redToWhite 3.4s ease-in-out infinite; animation-delay: 0.36s; }
+        .d4 { animation: redToWhite 2.9s ease-in-out infinite; animation-delay: 0.54s; }
+        .d5 { animation: redToWhite 3.2s ease-in-out infinite; animation-delay: 0.72s; }
+        .d6 { animation: redToWhite 2.4s ease-in-out infinite; animation-delay: 0.9s; }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s, text-shadow 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        nav a.active {
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 10px;
+                font-size: 0.9em;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main role="main" class="container-main">
+        <div class="container">
+            <header>
+                <nav role="navigation" aria-label="Ana Menü">
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="games.html" class="active">Oyunlar</a></li>
+                        <li><a href="music.html">Müzikler</a></li>
+                        <li><a href="images.html">Resimler</a></li>
+                        <li><a href="mixer.html">Mixleme</a></li>
+                        <li><a href="about.html">Hakkında</a></li>
+                        <li><a href="faq.html">SSS</a></li>
+                    </ul>
+                </nav>
+                <h1>🎮 Oyunlar</h1>
+                <p class="subtitle">Ücretsiz online oyunlar. Ping Pong ile başlayın!</p>
+            </header>
+
+            <section class="game-section">
+                <div class="score" role="region" aria-label="Oyuncu ve Bilgisayar Puanları">
+                    <div class="score-item">
+                        <div class="score-label">Oyuncu</div>
+                        <div id="player1Score" aria-live="polite">0</div>
+                    </div>
+                    <div>
+                        <div class="line" aria-label="585858">
+                            <span class="digit d1">5</span>
+                            <span class="digit d2">8</span>
+                            <span class="digit d3">5</span>
+                            <span class="digit d4">8</span>
+                            <span class="digit d5">5</span>
+                            <span class="digit d6">9</span>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Bilgisayar</div>
+                        <div id="player2Score" aria-live="polite">0</div>
+                    </div>
+                </div>
+
+                <canvas id="gameCanvas" width="600" height="400" role="img" aria-label="Ping Pong oyun alanı"></canvas>
+            </section>
+
+            <div class="controls-section">
+                <button class="start-button" id="startButton" aria-label="Oyunu başlat veya durdur">Oyunu Başlat</button>
+
+                <section class="controls" role="region" aria-label="Oyun Kontrolleri">
+                    <h2>Nasıl Oynanır?</h2>
+                    <p><strong>Bilgisayar:</strong> Yukarı/Aşağı tuşları veya W/S</p>
+                    <p><strong>Mobil:</strong> Ekrana dokunarak veya sürükleyerek oyna</p>
+                </section>
+            </div>
+
+            <footer role="contentinfo">
+                <p>&copy; 2024 AI Entertainment Platform. Tüm hakları saklıdır.</p>
+                <p>
+                    <a href="about.html">Hakkında</a> |
+                    <a href="faq.html">SSS</a> |
+                    <a href="robots.txt">Robots.txt</a> |
+                    <a href="sitemap.xml">Sitemap</a>
+                </p>
+                <p>
+                    <small>HTML5 ve Canvas API ile geliştirilmiştir.</small>
+                </p>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Oyun değişkenleri
+        const paddleWidth = 10;
+        const paddleHeight = 80;
+        const ballSize = 8;
+        
+        let gameStarted = false;
+        let gameRunning = false;
+        let animationId = null;
+
+        let player1 = {
+            x: 10,
+            y: canvas.height / 2 - paddleHeight / 2,
+            width: paddleWidth,
+            height: paddleHeight,
+            dy: 0,
+            score: 0,
+            speed: 6
+        };
+
+        let player2 = {
+            x: canvas.width - paddleWidth - 10,
+            y: canvas.height / 2 - paddleHeight / 2,
+            width: paddleWidth,
+            height: paddleHeight,
+            dy: 0,
+            score: 0,
+            speed: 5
+        };
+
+        let ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            dx: 5,
+            dy: 5,
+            radius: ballSize
+        };
+
+        // Oyun kontrol değişkenleri
+        let keys = {};
+        let touchY = null;
+
+        // Klavye olayları
+        document.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+            keys[key] = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            const key = e.key.toLowerCase();
+            keys[key] = false;
+        });
+
+        // Dokunmatik kontrol
+        canvas.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            touchY = touch.clientY - canvas.getBoundingClientRect().top;
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            touchY = touch.clientY - canvas.getBoundingClientRect().top;
+            
+            // Raket konumunu dokunma noktasına göre ayarla
+            player1.y = touchY - paddleHeight / 2;
+        });
+
+        canvas.addEventListener('touchend', () => {
+            touchY = null;
+            player1.dy = 0;
+        });
+
+        // Mouse kontrol (mobilde alternatif)
+        canvas.addEventListener('mousemove', (e) => {
+            if (e.buttons === 1) { // Fare basılıysa
+                const rect = canvas.getBoundingClientRect();
+                const mouseY = e.clientY - rect.top;
+                player1.y = mouseY - paddleHeight / 2;
+            }
+        });
+
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.dx = (Math.random() > 0.5 ? 1 : -1) * 5;
+            ball.dy = (Math.random() - 0.5) * 6;
+        }
+
+        function updateGame() {
+            if (!gameRunning) return;
+
+            // Klavye kontrolleri
+            if (keys['w'] || keys['arrowup']) {
+                player1.y -= player1.speed;
+            }
+            if (keys['s'] || keys['arrowdown']) {
+                player1.y += player1.speed;
+            }
+
+            // Oyuncu 1 sınırlarını kontrol et
+            if (player1.y < 0) {
+                player1.y = 0;
+            }
+            if (player1.y + player1.height > canvas.height) {
+                player1.y = canvas.height - player1.height;
+            }
+
+            // Bilgisayar AI
+            const player2Center = player2.y + player2.height / 2;
+            const ballCenter = ball.y;
+            
+            if (ballCenter < player2Center - 35) {
+                player2.y -= player2.speed;
+            } else if (ballCenter > player2Center + 35) {
+                player2.y += player2.speed;
+            }
+
+            // Sınırlar
+            if (player2.y < 0) player2.y = 0;
+            if (player2.y + player2.height > canvas.height) {
+                player2.y = canvas.height - player2.height;
+            }
+
+            // Top hareketi
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Top duvar çarpışması
+            if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.dy = -ball.dy;
+            }
+
+            // Raketler ile çarpışma
+            if (
+                ball.x - ball.radius < player1.x + player1.width &&
+                ball.y > player1.y &&
+                ball.y < player1.y + player1.height
+            ) {
+                ball.dx = -ball.dx;
+                ball.x = player1.x + player1.width + ball.radius;
+                
+                // Top hızını raket pozisyonuna göre ayarla
+                const collidePoint = ball.y - (player1.y + player1.height / 2);
+                ball.dy = (collidePoint / (player1.height / 2)) * 5;
+            }
+
+            if (
+                ball.x + ball.radius > player2.x &&
+                ball.y > player2.y &&
+                ball.y < player2.y + player2.height
+            ) {
+                ball.dx = -ball.dx;
+                ball.x = player2.x - ball.radius;
+                
+                const collidePoint = ball.y - (player2.y + player2.height / 2);
+                ball.dy = (collidePoint / (player2.height / 2)) * 5;
+            }
+
+            // Puan sistemi
+            if (ball.x < 0) {
+                player2.score++;
+                document.getElementById('player2Score').textContent = player2.score;
+                resetBall();
+            }
+
+            if (ball.x > canvas.width) {
+                player1.score++;
+                document.getElementById('player1Score').textContent = player1.score;
+                resetBall();
+            }
+        }
+
+        function draw() {
+            // Oyun alanını temizle
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Orta çizgi
+            ctx.strokeStyle = '#fff';
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Raketleri çiz
+            ctx.fillStyle = '#00ff00';
+            ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+            
+            ctx.fillStyle = '#ff00ff';
+            ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+
+            // Topu çiz
+            ctx.fillStyle = '#ffff00';
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function gameLoop() {
+            updateGame();
+            draw();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        // Başlat butonu
+        document.getElementById('startButton').addEventListener('click', () => {
+            gameRunning = !gameRunning;
+            if (gameRunning) {
+                document.getElementById('startButton').textContent = 'Oyunu Durdur';
+            } else {
+                document.getElementById('startButton').textContent = 'Oyunu Başlat';
+            }
+        });
+
+        // İlk çizim
+        draw();
+        gameLoop();
+    </script>
+</body>
+</html>

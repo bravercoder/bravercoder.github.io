@@ -1,0 +1,23 @@
+# Robots.txt - Arama motorları için talimatlar
+# https://www.robotstxt.org
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# Crawl delay (saniye cinsinden)
+Crawl-delay: 1
+
+# Sitemap konumu
+Sitemap: https://defter.42web.io/sitemap.xml
+
+# Google'a özgü ayarlar
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing'e özgü ayarlar
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
